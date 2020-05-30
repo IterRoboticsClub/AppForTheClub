@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 class Rotator extends StatefulWidget {
   @override
   _RotatorState createState() => _RotatorState();
@@ -10,21 +11,21 @@ class _RotatorState extends State<Rotator> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     controller = AnimationController(
-      vsync: this, duration: const Duration(seconds: 10000));
-      print("$controller.value");
+        vsync: this, duration: const Duration(seconds: 10000));
+    print("$controller.value");
     controller.forward();
-    
   }
+
   @override
-void dispose() {
-  controller.dispose();
-  super.dispose();
-}
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.amber,
+      color: Colors.blueAccent,
       child: Center(
           child: RotatingGear(
         controller: controller,
@@ -36,7 +37,8 @@ void dispose() {
 class RotatingGear extends AnimatedWidget {
   RotatingGear({AnimationController controller})
       : super(
-            listenable: Tween<double>(begin: 0, end: 15000).animate(controller));
+            listenable:
+                Tween<double>(begin: 0, end: 15000).animate(controller));
   @override
   Widget build(BuildContext context) {
     Animation<double> animation = listenable;

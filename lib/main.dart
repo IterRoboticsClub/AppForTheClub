@@ -1,8 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:flutter/material.dart';
 import 'package:two_page_draft/pages/landing_page.dart';
-import 'pages/Info_page.dart';
+
 import 'NavItem.dart';
+import 'pages/Info_page.dart';
+
 void main() {
   return runApp(MyApp());
 }
@@ -13,14 +15,17 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
-
-
 class _MyAppState extends State<MyApp> {
-
-  int pageTracker=0;
+  int pageTracker = 0;
   List<NavItem> navitem = <NavItem>[
-    NavItem(color: Colors.white, backgroundColor: Colors.amber,buttonBackgroundColor: Colors.amberAccent),
-    NavItem(color: Colors.blueGrey,backgroundColor: Color.fromARGB(0, 96, 96, 96),buttonBackgroundColor: Colors.grey),
+    NavItem(
+        color: Colors.white,
+        backgroundColor: Colors.blueAccent,
+        buttonBackgroundColor: Colors.white),
+    NavItem(
+        color: Colors.blueGrey,
+        backgroundColor: Color.fromARGB(0, 96, 96, 96),
+        buttonBackgroundColor: Colors.grey),
   ];
 
   PageController _pageController;
@@ -31,18 +36,20 @@ class _MyAppState extends State<MyApp> {
       initialPage: 0,
     );
   }
-  
+
   @override
   void dispose() {
     _pageController.dispose();
     super.dispose();
   }
-  _onPageViewChange(int change){
+
+  _onPageViewChange(int change) {
     print("Current Page $change");
     setState(() {
-    pageTracker=change;  
+      pageTracker = change;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -62,7 +69,7 @@ class _MyAppState extends State<MyApp> {
             animationCurve: Curves.bounceInOut,
             backgroundColor: navitem[pageTracker].backgroundColor,
             buttonBackgroundColor: navitem[pageTracker].buttonBackgroundColor,
-            index : pageTracker,
+            index: pageTracker,
             color: navitem[pageTracker].color,
             height: 45,
             items: <Widget>[
